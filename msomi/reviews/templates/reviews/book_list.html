@@ -1,0 +1,70 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %} | Book-List{% endblock %}
+
+{% block content %}
+
+     <div class="container-fluid mt-3 h5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="text-decoration-none text-primary" href="/">Index</a></li>
+            <li
+                    {% if '/books' in  request.path %}
+                                     class="breadcrumb-item active"
+                                {% else %}
+                                     class="breadcrumb-item"
+                                {% endif %}
+                 aria-current="page">Books</li>
+          </ol>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+{#            <ul class="list-group">#}
+{#              {% for item in book_list %}#}
+{#              <li class="list-group-item myshadow my-3">#}
+{#                  <span class="text-primary">Title: </span> <span>{{ item.book.title }}</span>#}
+{#                  <br>#}
+{#                  <span class="text-primary">Publisher: </span><span>{{ item.book.publisher }}</span>#}
+{#                  <br>#}
+{#                  <span class="text-primary">Publication Date: </span><span>{{ item.book.publication_date }}</span>#}
+{#                  <br>#}
+{#                  <span class="text-primary">Rating: </span><span class="badge badge-primary badge-pill">{{ item.book_rating }}</span>#}
+{#                  <br>#}
+{#                  <span class="text-primary">Number of reviews: </span><span>{{ item.number_of_reviews }}</span>#}
+{#                  <br>#}
+{#                  {% if not item.book_rating %}#}
+{#                  <span class="text-secondary">Provide a rating and write the first review for this book.</span>#}
+{#                  <br>#}
+{#                  {% endif %}#}
+{#                  <a class="btn btn-primary btn-sm active rounded my-3" role="button" href="{% url 'book_detail' item.book.pk %}">Reviews</a></li>#}
+{#              </li>#}
+{#              {% endfor %}#}
+{#            </ul>#}
+
+
+            <ul class="align-center">
+              {% for item in book_list %}
+              <li class="card col-10 myshadow p-4 my-3">
+                  <span class="text-primary">Title: </span> <span>{{ item.book.title }}</span>
+                  <br>
+                  <span class="text-primary">Publisher: </span><span>{{ item.book.publisher }}</span>
+                  <br>
+                  <span class="text-primary">Publication Date: </span><span>{{ item.book.publication_date }}</span>
+                  <br>
+                  <span class="text-primary">Rating: </span><span class="badge badge-primary badge-pill">{{ item.book_rating }}</span>
+                  <br>
+                  <span class="text-primary">Number of reviews: </span><span>{{ item.number_of_reviews }}</span>
+                  <br>
+                  {% if not item.book_rating %}
+                  <span class="text-secondary">Provide a rating and write the first review for this book.</span>
+                  <br>
+                  {% endif %}
+                  <a class="btn col-3 btn-primary btn-sm active rounded p-2 my-3" role="button" href="{% url 'book_detail' item.book.pk %}">Reviews</a></li>
+              </li>
+              {% endfor %}
+            </ul>
+
+    </div>
+
+{% endblock %}

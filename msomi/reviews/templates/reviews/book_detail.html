@@ -1,0 +1,58 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %} | Book Details{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mt-3">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="text-decoration-none text-primary" href="/books">Books</a></li>
+            <li
+                    {% if '/book_detail' in  request.path %}
+                                     class="breadcrumb-item active"
+                                {% else %}
+                                     class="breadcrumb-item"
+                                {% endif %}
+                 aria-current="page">Book Details</li>
+          </ol>
+    </nav>
+    </div>
+
+    <div class="container-fluid">
+        <br>
+      <h3>Book Details</h3>
+      <hr>
+      <span class="text-primary">Title: </span> <span>{{ book.title }}</span>
+      <br>
+      <span class="text-primary">Publisher: </span><span>{{ book.publisher }}</span>
+      <br>
+      <span class="text-primary">Publication Date: </span><span>{{ book.publication_date }} </span> | <span class="text-muted text-sm">{{ book.publication_date  | timesince  }}</span>
+      <br>
+      {% if not reviews %}
+            <hr>
+            <h3>Be the first one to write a review.</h3>
+      {% else %}
+            <span class="text-primary">Overall Rating: </span><span class="badge badge-primary badge-pill">{{ book_rating }}</span>
+            <br>
+            <hr>
+            <h3>Review Comments</h3>
+            <ul>
+            {% for review in reviews %}
+                  <li class="list-group-item">
+                        <span class="text-primary">Review comment: </span> <span>{{ review.content }}</span>
+                        <br>
+                        <span class="text-primary">Created on: </span><span>{{ review.date_created | timesince }}</span>
+                        <br>
+                        <span class="text-primary">Modified on: </span><span>{{ review.date_edited }}</span> | <span class="text-muted text-sm">{{ review.date_edited | timesince }}</span>
+                        <br>
+                        <span class="text-primary">Rating: </span><span class="badge text-bg-secondary rounded-pill">{{ review.rating }}</span>
+                        <br>
+                        <span class="text-primary">Creator: </span><span>{{ review.creator.username }}</span>
+                        <br>
+                  </li>
+            {% endfor %}
+            </ul>
+      {% endif %}
+    </div>
+{% endblock %}
