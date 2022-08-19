@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3 h5">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="text-decoration-none text-primary" href="/books">Books</a></li>
@@ -33,7 +33,7 @@
             <hr>
             <h3>Be the first one to write a review.</h3>
       {% else %}
-            <span class="text-primary">Overall Rating: </span><span class="badge badge-primary badge-pill">{{ book_rating }}</span>
+            <span class="text-primary">Overall Rating: </span><span class="mybadge">{{ book_rating }}</span>
             <br>
             <hr>
             <h3>Review Comments</h3>
@@ -44,9 +44,9 @@
                         <br>
                         <span class="text-primary">Created on: </span><span>{{ review.date_created | timesince }}</span>
                         <br>
-                        <span class="text-primary">Modified on: </span><span>{{ review.date_edited }}</span> | <span class="text-muted text-sm">{{ review.date_edited | timesince }}</span>
+                        <span class="text-primary">Modified on: </span><span>{{ review.date_edited }}</span>C
                         <br>
-                        <span class="text-primary">Rating: </span><span class="badge text-bg-secondary rounded-pill">{{ review.rating }}</span>
+                        <span class="text-primary">Rating: </span><span class="mybadge">{{ review.rating }}</span>
                         <br>
                         <span class="text-primary">Creator: </span><span>{{ review.creator.username }}</span>
                         <br>
