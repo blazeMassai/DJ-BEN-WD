@@ -1,0 +1,56 @@
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+        body{
+            color: #000000;
+        }
+         .navbar {
+        min-height: 100px;
+        font-size: 16px;
+      }
+      .navbar-brand {
+        font-size: 25px;
+      }
+
+      .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+      }
+
+      .myshadow:hover {
+          /*box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;*/
+         -webkit-transform: scale(0.99);
+            transform: scale(0.99);
+
+      }
+
+      .myshadow {
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      }
+      .text-sm{
+          font-size: 14px;
+      }
+
+      .mybadge {
+              background-color: #512E5F ;
+              color: white;
+              padding: 2px 6px;
+              text-align: center;
+              border-radius: 10px;
+      }
+
+      .list-group-item.mybadge , .mybadge{
+          font-size: 12px !important;
+      }
+
+
+.navbar-brand > img {
+    height: 25px;
+    margin-bottom: 8px;
+    /*border-radius: 50% !important;*/
+}

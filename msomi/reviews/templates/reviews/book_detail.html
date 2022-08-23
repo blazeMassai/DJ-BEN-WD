@@ -19,7 +19,7 @@
     </nav>
     </div>
 
-    <div class="container-fluid">
+    <div class="container my-3">
         <br>
       <h3>Book Details</h3>
       <hr>
@@ -39,20 +39,22 @@
             <h3>Review Comments</h3>
             <ul>
             {% for review in reviews %}
-                  <li class="list-group-item">
+                  <li class="list-group-item my-3">
                         <span class="text-primary">Review comment: </span> <span>{{ review.content }}</span>
                         <br>
-                        <span class="text-primary">Created on: </span><span>{{ review.date_created | timesince }}</span>
+                        <span class="text-primary">Created on: </span><span>{{ review.date_created }}</span> | <span>{{ review.date_created | timesince }}</span>
                         <br>
-                        <span class="text-primary">Modified on: </span><span>{{ review.date_edited }}</span>C
+                        <span class="text-primary">Modified on: </span><span>{{ review.date_edited }}</span> | <span>{{ review.date_edited | timesince }}</span>
                         <br>
                         <span class="text-primary">Rating: </span><span class="mybadge">{{ review.rating }}</span>
                         <br>
                         <span class="text-primary">Creator: </span><span>{{ review.creator.username }}</span>
                         <br>
+                        <a class="my-1 text-primary" title="Edit Review" href="{% url 'review_edit' book.pk review.pk %}"><span><i class="fas fa-edit fa-2x"></i></span></a>
                   </li>
             {% endfor %}
             </ul>
       {% endif %}
+    <a class="btn btn-primary" href="{% url 'review_create' book.pk %}">Add Review</a>
     </div>
 {% endblock %}
