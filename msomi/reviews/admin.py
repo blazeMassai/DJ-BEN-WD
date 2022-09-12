@@ -3,10 +3,12 @@ from reviews.models import (Publisher, Contributor, Book,
                             BookContributor, Review)
 from django.contrib.admin import AdminSite
 
+
 class BookAdminSite(AdminSite):
     title_header = 'Msomi'
     site_header = 'Msomi Administrator'
     index_title = 'Msomi Site Admin'
+
 
 class BookAdmin(admin.ModelAdmin):
     date_hierarchy = 'publication_date'
@@ -27,8 +29,12 @@ class ContributorAdmin(admin.ModelAdmin):
     search_fields = ('last_names__startswith', 'first_names')
 
 
+class PublisherAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'website', 'email')
+
+
 # Register your models here.
-admin.site.register(Publisher)
+admin.site.register(Publisher, PublisherAdmin)
 admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(BookContributor)

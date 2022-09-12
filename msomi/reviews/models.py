@@ -20,6 +20,12 @@ class Book(models.Model):
     isbn = models.CharField(max_length=20, verbose_name="ISBN number of the book")
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)  # establishes a many-to-one relationship
     contributors=models.ManyToManyField('Contributor', through="BookContributor")
+    cover = models.ImageField(null=True,
+                              blank=True,
+                              upload_to="book_covers/")
+    sample = models.FileField(null=True,
+                              blank=True,
+                              upload_to="book_samples/")
 
     def __str__(self):
         return "{} ({})".format(self.title, self.isbn)

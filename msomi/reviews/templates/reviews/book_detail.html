@@ -23,12 +23,28 @@
         <br>
       <h3>Book Details</h3>
       <hr>
+
+      {% if book.cover %}
+            <img src="{{ book.cover.url }}">
+            <br>
+      {% endif %}
+
       <span class="text-primary">Title: </span> <span>{{ book.title }}</span>
       <br>
       <span class="text-primary">Publisher: </span><span>{{ book.publisher }}</span>
       <br>
       <span class="text-primary">Publication Date: </span><span>{{ book.publication_date }} </span> | <span class="text-muted text-sm">{{ book.publication_date  | timesince  }}</span>
       <br>
+
+      {% if book.sample %}
+            <span class="text-info">Sample: </span><span><a href="{{ book.sample.url }}">Download</a></span>
+            <br>
+
+          {% else %}
+          <a class="text-warning" title="Add Media" href="{% url 'book_media' book.pk %}"><span><i class="my-1 fas fa-upload fa-2x"></i></span></a>
+          <br>
+      {% endif %}
+
       {% if not reviews %}
             <hr>
             <h3>Be the first one to write a review.</h3>

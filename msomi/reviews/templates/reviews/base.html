@@ -35,6 +35,17 @@
                           >
                             <a class="nav-link" href="/books">Home <span class="sr-only">(current)</span></a>
                           </li>
+
+                            <li
+                                {% if '/publishers/new' in  request.path %}
+                                     class="nav-item active"
+                                {% else %}
+                                     class="nav-item"
+                                {% endif %}
+                          >
+                            <a class="nav-link" href="/publishers/new">Add Publisher <span class="sr-only">(current)</span></a>
+                          </li>
+
                           <li class="nav-item">
                             <a class="nav-link" href="#">Logout</a>
                           </li>
@@ -52,7 +63,13 @@
             </div>
         </nav>
 
-          <div class="container-fluid pt-1 pb-4">
+        {% for message in messages %}
+          <div class="alert alert-{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+
+          <div class="container-fluid pt-1 mb-4">
                 {% block content %}
 
 
